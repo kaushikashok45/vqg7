@@ -50,6 +50,10 @@ if ($availabletoken <= $totaltokens and $availabletoken > 0)
             $sortconnect = $connect->select($connection,$sortsql);
             $s = "select * from customersorted order by distance asc";
             $svalue = $connect->select($connection, $s);
+            $drop="drop table customerdistance";
+            $dropconnect=$connect->select($connection,$drop);
+            $create="create table customerdistance(phone varchar(11) unique,distance varchar(50),token int auto_increment unique)";
+            $createconnect=$connect->select($connection,$create);
             while ($sfetch = $connect->fetchData($svalue))
             {
                 $customerphonei = $sfetch["phone"];
@@ -71,6 +75,8 @@ if ($availabletoken <= $totaltokens and $availabletoken > 0)
                 }
                 elseif ($shopdetai["phone"] != $custphone)
                 {
+                  
+
                     
                     $availabletoken = $availabletoken - 1;
                     $tokenupdate = "update shop set available_tokens='$availabletoken' where name='$shopname'";
@@ -135,12 +141,20 @@ if ($availabletoken <= $totaltokens and $availabletoken > 0)
                <BUTTON class='username' name="close" id="idbtn">I AM DONE</BUTTON>
                 <h1>Queue Order</h1> 
                 <?php
+        $sqllength="select * from customerdistance";
+        $lengthconnect=$connect->select($connection,$sqllength);
+        $lengthrow=mysqli_num_rows($lengthconnect);
         $valq = "select * from customerdistance where phone='$custphone'";
         $valresult = $connect->select($connection, $valq);
+        if($lengthrow >=5){
         $customerfinalresult = $connect->fetchData($valresult) ?>
                      <p>The customer with <?php echo $customerfinalresult["phone"] ?> will get token number <?php echo $customerfinalresult["token"] ?></p><br>
        <?php
     }
+    else{ ?>
+        <h1 class="b-header"><?php echo "please wait calculating your queue...."; ?></h1>
+  <?php  }
+}
 }
 else
 { ?>

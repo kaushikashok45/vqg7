@@ -71,11 +71,12 @@ DROP TABLE IF EXISTS `customerdistance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customerdistance` (
-  `phone` varchar(50) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
   `distance` varchar(50) DEFAULT NULL,
-  `token` int(11) DEFAULT NULL,
+  `token` int(11) NOT NULL AUTO_INCREMENT,
+  UNIQUE KEY `token` (`token`),
   UNIQUE KEY `phone` (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,8 +85,32 @@ CREATE TABLE `customerdistance` (
 
 LOCK TABLES `customerdistance` WRITE;
 /*!40000 ALTER TABLE `customerdistance` DISABLE KEYS */;
-INSERT INTO `customerdistance` VALUES ('8220595109','0.4082',1),('9443563720','0.4091',2),('9159416225','0.4308',3),('9655944820','2.6525',4),('9626336554','0.5054',5),('9790393758','7.1911',6),('7373765460','7.3101',7),('9159232169','6.306',8),('9894047689','7181.0792',9),('861050400','18.2551',10);
+INSERT INTO `customerdistance` VALUES ('9790393758','7.1911',1),('9443563720','0.4091',2);
 /*!40000 ALTER TABLE `customerdistance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customersorted`
+--
+
+DROP TABLE IF EXISTS `customersorted`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customersorted` (
+  `phone` varchar(50) DEFAULT NULL,
+  `distance` varchar(50) DEFAULT NULL,
+  UNIQUE KEY `phone` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customersorted`
+--
+
+LOCK TABLES `customersorted` WRITE;
+/*!40000 ALTER TABLE `customersorted` DISABLE KEYS */;
+INSERT INTO `customersorted` VALUES ('9790393758','7.1911'),('9443563720','0.4091');
+/*!40000 ALTER TABLE `customersorted` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -103,6 +128,7 @@ CREATE TABLE `shop` (
   `total_tokens` varchar(100) DEFAULT NULL,
   `available_tokens` varchar(100) DEFAULT NULL,
   `image` blob DEFAULT NULL,
+  `active` int(11) DEFAULT 0,
   PRIMARY KEY (`unique_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -113,7 +139,7 @@ CREATE TABLE `shop` (
 
 LOCK TABLES `shop` WRITE;
 /*!40000 ALTER TABLE `shop` DISABLE KEYS */;
-INSERT INTO `shop` VALUES (1,'PIZZA HUT','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL),(2,'DLF','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL),(3,'LULU PARADISE','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL),(4,'STARBUGS','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL),(5,'CAFE COFFEE DAY','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL);
+INSERT INTO `shop` VALUES (1,'PIZZA HUT','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','93',NULL,1),(2,'DLF','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL,0),(3,'LULU PARADISE','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL,0),(4,'STARBUGS','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL,0),(5,'CAFE COFFEE DAY','9.30-10.30','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis soluta modi porro dolores? Qui, odit ea! Fuga, ducimus? Nihil vel at quibusdam earum odit quos odio, magni fugit autem eius corporis voluptates. Animi consequatur est quisquam unde corporis assumenda autem sint ducimus','99','99',NULL,0);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +191,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('9790393758','sarojini','admin1','1','jonny',1),('8220595109','Dinesh Kumar P K','dinesh123','1','ajay',2),('9443563720','Kumaresan','kumar','1','abs',1),('9626336554','ajay olan','olu','1','ajay kumar',1);
+INSERT INTO `user` VALUES ('9790393758','sarojini','admin1','1','jonny',1),('8220595109','Dinesh Kumar P K','dinesh123','1','ajay',2),('9443563720','Kumaresan','kumar','1','abs',1),('9626336554','ajay olan','olu','1','ajay kumar',1),('9876543210','ashok','ashok','1','john',1),('9159416225','tharun','tharun','1','john',1),('9876432150','END','end','1','johm',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -178,4 +204,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-02 21:20:51
+-- Dump completed on 2021-12-14 13:51:28
