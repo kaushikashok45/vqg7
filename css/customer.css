@@ -1,0 +1,111 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.username {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    margin: 8px 0px;
+}
+
+.username a {
+    text-decoration: none;
+    color: white;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-details {
+    display: flex;
+    margin-bottom: 19px;
+}
+
+.shop-details p {
+    text-align: justify;
+}
+
+.shop-img {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop-identity {
+    width: 50%;
+}
+
+.extent {
+    margin: 0px;
+}
+
+.shop-identity h3 {
+    margin: 5px 0px;
+}
+
+.shop-identity h4 {
+    margin: 5px 0px;
+}
+
+.ccd img {
+    width: 47%;
+}
+
+.specific-shop {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 600px;
+    bottom: 41%;
+    position: fixed;
+    width: 281px;
+    background: cornsilk;
+    border: 2px solid black;
+    border-radius: 54px;
+}
+
+.shop-details-expand {
+    display: flex;
+    justify-content: center;
+}
+
+.shop-details-expand h3 {
+    width: 43%;
+}
+
+.shop-details-expand p {
+    width: 30%;
+}
+
+.shop-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel {
+    background-color: beige;
+    margin-left: 75%;
+    padding: 0px;
+    color: beige;
+    border: 0px;
+}
+
+.cancel img {
+    width: 25px;
+    background-color: beige;
+}
+
+.left {
+    margin-left: 104px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: black;
+    color: white;
+}
